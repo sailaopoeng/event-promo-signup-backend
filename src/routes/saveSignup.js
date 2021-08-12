@@ -10,6 +10,9 @@ export const saveSignup = {
         const { username, email } = req.body;
         if(!username || !email) return res.sendStatus(400);
 
+        const emailRegexp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+        if(!emailRegexp.test(email)) return res.status(400).send("Invalid email address format");
+
         // const dynamoDb = getDb();
         const docClient = getDbClient();
 
