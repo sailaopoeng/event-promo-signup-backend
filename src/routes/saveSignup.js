@@ -1,6 +1,5 @@
 import { byPass } from "../auth/byPass";
 import { getDbClient } from "../utils/getDbClient";
-import constants from "../constants";
 
 export const saveSignup = {
     path: '/api/save-signup',
@@ -17,7 +16,7 @@ export const saveSignup = {
         const docClient = getDbClient();
 
         var params = {
-            TableName: constants.db_table_name,
+            TableName: process.env.db_table_name,
             Item:{
                 "name": username,
                 "email": email

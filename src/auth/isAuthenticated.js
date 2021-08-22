@@ -1,11 +1,10 @@
 import jwt from 'jsonwebtoken';
-import constants from '../constants';
 
 export const isAuthenticated = (req, res, next) => {
 	var token = req.headers.authorization;
 	if(token && token.substr(0,6) == 'Bearer'){
 		token = token.substr(7);
-		var decoded = jwt.verify(token, constants.jws_secret, function(err, decoded){
+		var decoded = jwt.verify(token, process.env.jws_secret, function(err, decoded){
 	        if(err){
 	            // if there is an error, the token is not valid!
 	            res.sendStatus(401);

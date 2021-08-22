@@ -1,11 +1,10 @@
 import { getDbClient } from "./getDbClient";
-import constants from "../constants";
 
 export const getDataByEmail = async (email, callback) => {
     var docClient = getDbClient();
 
     var params = {
-        TableName: constants.db_table_name,
+        TableName: process.env.db_table_name,
         Key:{
             "email": email
         }

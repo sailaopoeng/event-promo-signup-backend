@@ -1,8 +1,7 @@
 import { getDb } from '../utils/getDb';
-import constants from '../constants';
 
 var params = {
-    TableName : constants.db_table_name,
+    TableName : process.env.db_table_name,
     KeySchema: [       
         { AttributeName: "email", KeyType: "HASH"}
     ],
